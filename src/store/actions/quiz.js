@@ -8,13 +8,14 @@ export function fetchQuizes() {
       const response = await axios.get('https://react-quiz-5c525.firebaseio.com/quizes.json')
 
       const quizes = []
-
+      console.log(response.data)
       Object.keys(response.data).forEach((key, index) => {
         quizes.push({
           id: key,
           name: `Тест №${index + 1}`
         })
       })
+      console.log(quizes)
       dispatch(fetchQuizesSuccess(quizes))
     } catch (e) {
       dispatch(fetchQuizesError(e))
